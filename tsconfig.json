@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "outDir": "app",
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es6",
+    "watch": true,
+    "allowJs": false
+  },
+  "exclude": [
+    "node_modules"    
+  ]
+}
