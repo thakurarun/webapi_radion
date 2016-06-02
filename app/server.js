@@ -15,7 +15,6 @@ class server {
         this.app.set("port", 3000);
     }
     route() {
-        //homeRouter.HomeRoute.bind(homeRouter.HomeRoute)
         let router = new homeRouter.HomeRoute();
         this.app.use("/", router.getRouter());
     }
