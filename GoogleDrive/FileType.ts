@@ -1,4 +1,4 @@
-export interface Labels {
+interface Labels {
     starred: boolean;
     hidden: boolean;
     trashed: boolean;
@@ -6,7 +6,7 @@ export interface Labels {
     viewed: boolean;
 }
 
-export interface Parent {
+interface Parent {
     kind: string;
     id: string;
     selfLink: string;
@@ -14,7 +14,7 @@ export interface Parent {
     isRoot: boolean;
 }
 
-export interface UserPermission {
+interface UserPermission {
     kind: string;
     etag: string;
     id: string;
@@ -23,11 +23,11 @@ export interface UserPermission {
     type: string;
 }
 
-export interface Picture {
+interface Picture {
     url: string;
 }
 
-export interface Owner {
+interface Owner {
     kind: string;
     displayName: string;
     picture: Picture;
@@ -36,11 +36,11 @@ export interface Owner {
     emailAddress: string;
 }
 
-export interface Picture2 {
+interface Picture2 {
     url: string;
 }
 
-export interface LastModifyingUser {
+interface LastModifyingUser {
     kind: string;
     displayName: string;
     picture: Picture2;
@@ -49,7 +49,7 @@ export interface LastModifyingUser {
     emailAddress: string;
 }
 
-export interface Item {
+interface Item {
     kind: string;
     id: string;
     etag: string;
@@ -93,4 +93,14 @@ export interface FileType {
     etag: string;
     selfLink: string;
     items: Item[];
+}
+export interface TokenInfo {
+    issued_to: string;
+    audience: string;
+    scope: string;
+    expires_in: number;
+    access_type: string;
+    error:string;
+    error_description:string;
+    token:string;
 }

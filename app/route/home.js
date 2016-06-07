@@ -2,7 +2,6 @@
 /// <reference path="./../typings/tsd.d.ts"/>
 const express = require("express");
 const Drive_1 = require("./../GoogleDrive/Drive");
-var ms = require('mediaserver');
 /**
  * HomeRoute
  */
@@ -11,7 +10,6 @@ class HomeRoute {
         let self = this;
         self.router = express.Router();
         self._drive = new Drive_1.Drive();
-        self.cache = {};
         self.router.get("/", function (req, res, next) {
             res.status(200).send("api is up :)");
         });
@@ -23,18 +21,17 @@ class HomeRoute {
             });
         });
         self.router.get("/redirectCallback", function (req, res, next) {
-            self._drive.setAccessToken(req.query.code).then((drive) => {
-                self.cache[req.query.code] = Object.assign({}, drive);
-                res.redirect("/getfolders?token=" + req.query.code);
+            self._drive.setAccessToken(req.query.code).then((code) => {
+                res.redirect("/getfolders?token=" + code);
             });
         });
         self.router.get("/getfolders", function (req, res, next) {
-            self._drive.getFolders(self.cache[req.query.token]).then((files) => {
+            self._drive.getFolders(req.query.token).then((files) => {
                 res.status(200).send(files);
             }, (err) => res.status(500).send(err));
         });
         self.router.get("/getfiles", function (req, res, next) {
-            self._drive.getFiles(self.cache[req.query.token]).then((files) => {
+            self._drive.getFiles(req.query.token).then((files) => {
                 res.status(200).send(files);
             }, (err) => res.status(500).send(err));
         });
