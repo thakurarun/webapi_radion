@@ -45,7 +45,6 @@ export class Drive {
             path: _url.pathname + "?access_token=" + access_token,
             method: 'GET',
         };
-
         return new Promise((resolve, reject) => {
             http.get(options, (res) => {
                 let data = "";
